@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.js"></script>
+  </head>
+  <body>
+  
+    <div class="navigation-bar">
+      <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <a class="navbar-brand" href="#">Task Manager</a> 
+        <button class="navbar-toggler" type="button" data-toggler="collapse" data-target="#nav-collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="nav-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+    </div>
+   
+    <div class="container-fluid">
+        <div class="col-md-4 offset-4" >
+          <div class="card" style="color: black;">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" placeholder="Enter Name" type="name">
+                  </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input class="form-control" placeholder="Enter Email" type="email">
+              </div>
+              <div class="form-group">
+                <label for="age">Age</label>
+                <input class="form-control" placeholder="Enter Age" type="age">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" placeholder="Enter Password" type="password">
+              </div>
+              <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input class="form-control" placeholder="Confirm Password" type="password">
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-primary btn-block">Register</button>
+              <div class="footer-content">
+                <span>Have an account?</span>&nbsp;&nbsp;
+                <a href="">Sign in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+ 
+  </body>
+</html>
