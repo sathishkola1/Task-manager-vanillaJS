@@ -1,4 +1,9 @@
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzkxZWVkZmUxMjY0NmFkOWQ1ZDcwMjYiLCJpYXQiOjE2NzA1MTAxNTJ9.gP8aZzyYvS1kztuPfRNVm_4Kg_BmvGYuuGiqII_ShDw'
+let token = localStorage.getItem('auth')
+if(!token){
+    window.location.href='./sign-in.html'
+}
+
+getTasks().then((res)=>{displayTasks()}).catch((err)=>console.log("Cannot fetch tasks!"))
 let tasksList = []
 async function getTasks(){
     try {
@@ -110,8 +115,4 @@ function toggle(state){
     }
 }
 
-function logOut(){
-    localStorage.removeItem("token")
-}
 
-getTasks().then((res)=>{displayTasks()}).catch((err)=>console.log("Cannot fetch tasks!"))
