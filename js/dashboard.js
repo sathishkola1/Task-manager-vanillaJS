@@ -3,6 +3,8 @@ if(!token){
     window.location.href='./sign-in.html'
 }
 
+let taskId = null
+
 getTasks().then((res)=>{displayTasks()}).catch((err)=>console.log("Cannot fetch tasks!"))
 let tasksList = []
 async function getTasks(){
@@ -28,7 +30,7 @@ function displayTasks(){
             <li class="list-group-item d-flex justify-content-between align-items-center">
             <span class="mr-2">${task.title}</span>
             <span>
-            <button id = "edit_${task._id}" onclick="openEditModal(this.id)" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#edit-modal">Edit</button>
+            <button id = "edit_${task._id}" onclick="openEditModal(this.id)" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#modal">Edit</button>
             <button id = "delete_${task._id}" onclick="deleteTask(this.id)" class="btn btn-danger">Delete</button>
             </span>
             </li>
@@ -38,11 +40,25 @@ function displayTasks(){
     document.getElementById("tasks").innerHTML = html
 }
 
-async function addTask(){
+
+async function addOrUpdateTask(){
     try {
-        let title = document.getElementById("add-title").value
-        let description = document.getElementById("add-description").value 
-        let completed = document.getElementById("add-iscompleted").checked
+        let title = document.getElementById("title").value
+        let description = document.getElementById("description").value 
+        let completed = document.getElementById("iscompleted").checked
+        if(taskId){
+            await fetch(`http://127.0.0.1:3000/api/tasks/${taskId}`,{
+                method : "PATCH",
+                headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                    },
+                body: JSON.stringify({ title,description,completed})
+            })
+            closeModal()
+            getTasks().then((res)=>{displayTasks()}).catch((err)=>console.log("Cannot fetch tasks!"))
+            return
+        }
         await fetch("http://127.0.0.1:3000/api/tasks/",{
             method : "POST",
             headers: {
@@ -57,33 +73,27 @@ async function addTask(){
     }
 }
 
-async function updateTask(id){
-    try {
-        let title = document.getElementById("edit-title").value
-        let description = document.getElementById("edit-description").value 
-        let completed = document.getElementById("edit-iscompleted").checked
-        await fetch(`http://127.0.0.1:3000/api/tasks/${id}`,{
-            method : "PATCH",
-            headers: {
-                'Content-type': 'application/json',
-                'Authorization': `Bearer ${token}`
-                },
-            body: JSON.stringify({ title,description,completed})
-        })
-        getTasks().then((res)=>{displayTasks()}).catch((err)=>console.log("Cannot fetch tasks!"))
-    } catch (error) {
-        console.log("Cannot update task!")
-    }
-}
-
 function openEditModal(id){
     id = id.substr(5)
     let task = tasksList.find( task => task._id === id )
-    document.getElementById("edit-title").value = task.title
-    document.getElementById("edit-description").value = task.description
-    document.getElementById("edit-iscompleted").checked = task.completed
-    let length = document.getElementsByTagName("button").length
-    document.getElementsByTagName("button")[length-1].id = id
+    document.getElementById("title").value = task.title
+    document.getElementById("description").value = task.description
+    document.getElementById("iscompleted").checked = task.completed
+    taskId = id
+}
+
+function closeModal(){
+    document.getElementById("title").value = null
+    document.getElementById("description").value = null
+    document.getElementById("iscompleted").checked = null
+    taskId = null
+}
+
+function openAddModal(){
+    document.getElementById("title").value = null
+    document.getElementById("description").value = null
+    document.getElementById("iscompleted").checked = null
+    taskId = null
 }
 
 async function deleteTask(id){

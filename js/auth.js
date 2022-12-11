@@ -23,7 +23,6 @@ async function logIn(){
     } catch(error){
         console.log("Invalid login",error)
         alert('Invalid email or password!')
-        // console.log(error)
     }
 }
 
@@ -57,6 +56,5 @@ async function signUp(){
         window.location.href = './sign-in.html'
     } catch(error){
         alert('Cannot register! Please try again')
-        // console.log(error)
     }
 }

@@ -19,30 +19,9 @@ html, body{
     font-weight: 700;
     font-size: 60px;
 }
-/* .profile-name{
-    font-size: 60px;
-    font-weight: 600;
-    padding: 15px;  
+.logoutPointer:hover{
+    cursor: pointer;
 }
-.profile{
-    margin-top: 3%;
+.taskmanagerPointer:hover{
+    cursor: default;
 }
-.profile-justify{
-    margin-left: 50px;
-}
-.age{
-    display: flex;
-    padding: 15px;
-}
-.age p{
-    margin-top: 5px;
-    margin-left: 20px;
-}
-.email{
-    display: flex;
-    padding: 15px;
-}
-.email p{
-    margin-top: 4px;
-    margin-left: 20px;
-} */
