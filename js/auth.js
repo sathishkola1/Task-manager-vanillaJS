@@ -8,7 +8,7 @@ async function logIn(){
         password : document.getElementById("password").value
     }
     try{
-        let res = await fetch('http://127.0.0.1:3000/api/users/login',{
+        let res = await fetch('https://task-manager-3pi7.onrender.com/api/users/login',{
             method:"POST",
             headers: {
                 Accept: "application/json",
@@ -43,7 +43,7 @@ async function signUp(){
         password 
     }
     try{
-        let res = await fetch('http://127.0.0.1:3000/api/users',{
+        let res = await fetch('https://task-manager-3pi7.onrender.com/api/users',{
             method:"POST",
             headers: {
                 Accept: "application/json",

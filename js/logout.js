@@ -1,6 +1,6 @@
 async function logOut(){
     try {
-        await fetch(`http://127.0.0.1:3000/api/users/logout`,{
+        await fetch(`https://task-manager-3pi7.onrender.com/api/users/logout`,{
             method : "POST",
             headers: {
                 'Content-type': 'application/json',

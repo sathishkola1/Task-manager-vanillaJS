@@ -9,7 +9,7 @@ getTasks().then((res)=>{displayTasks()}).catch((err)=>console.log("Cannot fetch 
 let tasksList = []
 async function getTasks(){
     try {
-        let results = await fetch("http://127.0.0.1:3000/api/tasks/",{
+        let results = await fetch("https://task-manager-3pi7.onrender.com/api/tasks/",{
                 headers: {
                     'Content-type': 'application/json',
                     'Authorization': `Bearer ${token}`
@@ -47,7 +47,7 @@ async function addOrUpdateTask(){
         let description = document.getElementById("description").value 
         let completed = document.getElementById("iscompleted").checked
         if(taskId){
-            await fetch(`http://127.0.0.1:3000/api/tasks/${taskId}`,{
+            await fetch(`https://task-manager-3pi7.onrender.com/api/tasks/${taskId}`,{
                 method : "PATCH",
                 headers: {
                     'Content-type': 'application/json',
@@ -59,7 +59,7 @@ async function addOrUpdateTask(){
             getTasks().then((res)=>{displayTasks()}).catch((err)=>console.log("Cannot fetch tasks!"))
             return
         }
-        await fetch("http://127.0.0.1:3000/api/tasks/",{
+        await fetch("https://task-manager-3pi7.onrender.com/api/tasks/",{
             method : "POST",
             headers: {
                 'Content-type': 'application/json',
@@ -99,7 +99,7 @@ function openAddModal(){
 async function deleteTask(id){
     try {
         id = id.substr(7)
-        await fetch(`http://127.0.0.1:3000/api/tasks/${id}`,{
+        await fetch(`https://task-manager-3pi7.onrender.com/api/tasks/${id}`,{
             method : "DELETE",
             headers: {
                 'Content-type': 'application/json',

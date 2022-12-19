@@ -6,7 +6,7 @@ if(!token){
 getProfile()
 async function getProfile(){
     try {
-        let results = await fetch("http://127.0.0.1:3000/api/users/me",{
+        let results = await fetch("https://task-manager-3pi7.onrender.com/api/users/me",{
                 headers: {
                     'Content-type': 'application/json',
                     'Authorization': `Bearer ${token}`
