@@ -16,6 +16,9 @@ async function logIn(){
                 },
             body: JSON.stringify(credentials)
         })
+        if(res.status!==200){
+            throw "Login error"
+        }
         res = await res.json()
         const authToken = res.token
         localStorage.setItem("auth",authToken)

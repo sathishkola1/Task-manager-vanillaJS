@@ -12,6 +12,9 @@ async function getProfile(){
                     'Authorization': `Bearer ${token}`
                     }
             })
+        if(res.status!==200){
+            throw "Error fetching profile"
+        }
         let profile = await results.json()
         document.getElementById("name").value = profile.name
         document.getElementById("email").value = profile.email
