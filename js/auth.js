@@ -24,7 +24,6 @@ async function logIn(){
         localStorage.setItem("auth",authToken)
         window.location.href='./dashboard.html'
     } catch(error){
-        console.log("Invalid login",error)
         alert('Invalid email or password!')
     }
 }

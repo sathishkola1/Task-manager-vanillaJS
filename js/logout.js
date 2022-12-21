@@ -2,7 +2,7 @@
 async function logOut(){
     let token = localStorage.getItem("auth")
     try {
-        let res = await fetch('http://localhost:3000/api/users/logout',{
+        let res = await fetch('https://task-manager-3pi7.onrender.com/api/users/logout',{
             method : "POST",
             headers: {
                 'Content-type': 'application/json',
@@ -17,7 +17,6 @@ async function logOut(){
         localStorage.removeItem("auth")
         window.location.href = './sign-in.html'
     } catch (error) {
-        console.log("bye",error)
         alert('Cannot logout! Please try again')
     }
 }
