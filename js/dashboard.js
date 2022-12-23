@@ -74,7 +74,7 @@ async function addOrUpdateTask() {
             },
             body: JSON.stringify({ title, description, completed })
         })
-        if(res.status!==200){
+        if(res.status!==201){
             throw "Error adding task"
         }
         getTasks().then((res) => { displayTasks() }).catch((err) => console.log("Cannot fetch tasks!"))
