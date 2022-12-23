@@ -17,9 +17,13 @@ async function logIn(){
             body: JSON.stringify(credentials)
         })
         if(res.status!==200){
+            res = await res.json()
+            console.log("error",res)
             throw "Login error"
         }
+       
         res = await res.json()
+        console.log("result",res)
         const authToken = res.token
         localStorage.setItem("auth",authToken)
         window.location.href='./dashboard.html'
@@ -53,6 +57,9 @@ async function signUp(){
                 },
             body: JSON.stringify(credentials)
         })
+        if(res.status!==200){
+            throw "Login error"
+        }
         res = await res.json()
         alert('Registered successfully! Please login to continue')
         window.location.href = './sign-in.html'

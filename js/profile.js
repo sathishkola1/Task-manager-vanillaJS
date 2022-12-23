@@ -12,7 +12,7 @@ async function getProfile(){
                     'Authorization': `Bearer ${token}`
                     }
             })
-        if(res.status!==200){
+        if(results.status!==200){
             throw "Error fetching profile"
         }
         let profile = await results.json()

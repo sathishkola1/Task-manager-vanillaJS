@@ -15,7 +15,7 @@ async function getTasks() {
                 'Authorization': `Bearer ${token}`
             }
         })
-        if (res.status !== 200) {
+        if (results.status !== 200) {
             throw "Cannot find tasks"
         }
         return tasksList = await results.json()
@@ -109,7 +109,7 @@ function openAddModal() {
 async function deleteTask(id) {
     try {
         id = id.substr(7)
-        await fetch(`https://task-manager-3pi7.onrender.com/api/tasks/${id}`, {
+        let res = await fetch(`https://task-manager-3pi7.onrender.com/api/tasks/${id}`, {
             method: "DELETE",
             headers: {
                 'Content-type': 'application/json',
